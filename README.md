@@ -66,4 +66,4 @@ the License.
 
 # Lessons completed
 - Lesson 5:
- - [Advanced Android in Kotlin 05.1: Testing Basics](https://developer.android.com/codelabs/advanced-android-kotlin-training-testing-basics#11)
+  - [Advanced Android in Kotlin 05.1: Testing Basics](https://developer.android.com/codelabs/advanced-android-kotlin-training-testing-basics#11)
