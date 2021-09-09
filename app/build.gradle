@@ -77,4 +77,7 @@ dependencies {
 
     // Architecture Components core testing library
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    // Coroutines in tests
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 }
