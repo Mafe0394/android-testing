@@ -1,18 +1,15 @@
 package com.example.android.architecture.blueprints.todoapp.tasks
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.android.architecture.blueprints.todoapp.data.Task
+import com.example.android.architecture.blueprints.todoapp.data.source.FakeTestRepository
 import com.example.android.architecture.blueprints.todoapp.getOrAwaitValue
-import com.example.android.architecture.blueprints.todoapp.taskdetail.TaskDetailFragmentArgs
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
 class TasksViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
@@ -27,10 +24,21 @@ class TasksViewModelTest {
 
     private lateinit var tasksViewModel: TasksViewModel
 
+    // Fake repository to be injected into the viwModel
+    private lateinit var tasksRepository: FakeTestRepository
+
     @Before
-    fun setupViewModel(){
+    fun setupViewModel() {
+
+        tasksRepository = FakeTestRepository()
+        val task1 = Task("Title1", "Description")
+        val task2 = Task("Title2", "Description", true)
+        val task3 = Task("Title3", "Description", true)
+
+        tasksRepository.addTasks(task1,task2,task3)
+
         /** Given a fresh [TasksViewModel]*/
-        tasksViewModel=TasksViewModel(ApplicationProvider.getApplicationContext())
+        tasksViewModel = TasksViewModel(tasksRepository)
     }
 
     @Test
@@ -55,8 +63,8 @@ class TasksViewModelTest {
         tasksViewModel.setFiltering(TasksFilterType.ALL_TASKS)
 
         /** Then the [TasksViewModel.tasksAddViewVisible] is true*/
-        val value=tasksViewModel.tasksAddViewVisible.getOrAwaitValue()
-        assertThat(value,`is`(true))
+        val value = tasksViewModel.tasksAddViewVisible.getOrAwaitValue()
+        assertThat(value, `is`(true))
     }
 
     /* Without LiveDataTestUtil
