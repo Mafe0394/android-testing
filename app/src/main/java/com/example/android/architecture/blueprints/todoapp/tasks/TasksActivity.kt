@@ -27,6 +27,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.android.architecture.blueprints.todoapp.R
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Main activity for the todoapp. Holds the Navigation Host Fragment and the Drawer, Toolbar, etc.

@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.example.android.architecture.blueprints.todoapp.databinding.TaskItemBinding
 import com.example.android.architecture.blueprints.todoapp.tasks.TasksAdapter.ViewHolder
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * Adapter for the task list. Has a reference to the [TasksViewModel] to send actions back to it.

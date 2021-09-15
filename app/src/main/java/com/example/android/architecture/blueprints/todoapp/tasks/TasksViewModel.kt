@@ -25,13 +25,14 @@ import com.example.android.architecture.blueprints.todoapp.data.Result.Success
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * ViewModel for the task list screen.
  */
-class TasksViewModel(private val tasksRepository: TasksRepository) : ViewModel() {
-
+class TasksViewModel @Inject constructor(private val tasksRepository: TasksRepository) : ViewModel() {
     private val _forceUpdate = MutableLiveData<Boolean>(false)
 
     private val _items: LiveData<List<Task>> = _forceUpdate.switchMap { forceUpdate ->

@@ -37,7 +37,9 @@ import com.example.android.architecture.blueprints.todoapp.util.setupRefreshLayo
 import com.example.android.architecture.blueprints.todoapp.util.setupSnackbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Display a grid of [Task]s. User can choose to view all, active or completed tasks.

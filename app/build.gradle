@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -29,6 +30,11 @@ android {
     // Always show the result of every unit test when running via command line, even if it passes.
     testOptions.unitTests {
         includeAndroidResources = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -80,4 +86,8 @@ dependencies {
 
     // Coroutines in tests
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+
+    // Hilt, Dependency Injector
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
 }
